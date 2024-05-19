@@ -1,0 +1,36 @@
+{
+  // Hugo Fedora Rawhide Dev Container
+  "name": "Hugo Fedora Rawhide",
+  "context": "..",
+  "dockerFile": "Containerfile",
+  "runArgs": [
+    // run container as current user
+    "--userns=keep-id",
+    // disable selinux isolation that breaks bind mounts
+    "--security-opt=label=disable"
+  ],
+  // run as a virtual damaestrous user isolated to the container
+  "containerUser": "damaestrous",
+  "updateRemoteUserUID": true,
+  "containerEnv": {
+    "HOME": "/home/damaestrous"
+  },
+  "customizations": {
+    "vscode": {
+      // use the shell default from the container
+      "settings": {
+        "terminal.integrated.shell.linux": null
+      },
+      // usefull vscode hugo plugins, isolated to the container
+      "extensions": [
+        "rusnasonov.vscode-hugo",
+        "eliostruyf.vscode-front-matter",
+        "budparr.language-hugo-vscode",
+        "eliostruyf.vscode-hugo-themer",
+        "akmittal.hugofy",
+        "kaellarkin.hugo-shortcode-syntax"
+      ]
+    }
+  }
+  //"postStartCommand": "npm install"
+}

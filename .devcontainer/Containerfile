@@ -1,0 +1,17 @@
+FROM registry.fedoraproject.org/fedora:rawhide
+
+# Get raw :-)
+RUN dnf --refresh -y distro-sync
+
+# Install hugo
+RUN dnf --refresh -y install hugo
+
+# Create our virtual user for runtime inside the container
+RUN set -ex; \
+    useradd -m -g users -s /bin/bash damaestrous; \
+    passwd damaestrous -d; \
+    echo "damaestrous ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+USER damaestrous
+
+# Do any user class setup

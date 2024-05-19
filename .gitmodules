@@ -1,0 +1,3 @@
+[submodule "themes/damaestrous"]
+	path = themes/damaestrous
+	url = https://github.com/damaestro/damaestrous-theme

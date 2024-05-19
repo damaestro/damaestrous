@@ -1,0 +1,4 @@
+baseURL = 'https://damaestro.us'
+languageCode = 'en-us'
+title = "daMaestro's"
+theme = 'damaestrous'
